@@ -1,0 +1,61 @@
+<div class="filters-container space-y-4">
+  <div class=" p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <label class="flex justify-between">
+      <span>Llega mañana</span>
+      <input value="" type="checkbox" class="sr-only peer">
+      <div
+        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+      </div>
+    </label>
+  </div>
+  <div class="p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <label class="flex justify-between">
+      <span>Envío gratis</span>
+      <input type="checkbox" class="sr-only peer">
+      <div
+        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+      </div>
+    </label>
+  </div>
+  <div class="p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <label class="flex justify-between">
+      <span>Tiendas oficiales</span>
+      <input type="checkbox" class="sr-only peer">
+      <div
+        class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+      </div>
+    </label>
+  </div>
+  <!-- DropList with Angular CDK -->
+  <div class="flex p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <ul class="w-full">
+      <li>
+        <cdk-accordion>
+          <cdk-accordion-item #accordionItem="cdkAccordionItem" role="button" tabindex="0" [expanded]="true">
+            <a class="flex items-center justify-between rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              (click)="accordionItem.toggle()">
+              <span>Marcas</span>
+              @if (accordionItem.expanded) {
+              <fa-icon [icon]="faChevronDown"></fa-icon>
+              } @else {
+              <fa-icon [icon]="faChevronUp"></fa-icon>
+              }
+            </a>
+            <div [style.display]="accordionItem.expanded ? '' : 'none'" [attr.id]="'accordion-body'"
+              [attr.aria-labelledby]="'accordion-header'">
+              <ul class="py-6 space-y-2">
+                @for (brand of brands; track $index) {
+                <li class="flex justify-between">
+                  <span>{{ brand }}</span>
+                  <input type="checkbox" value=""
+                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                </li>
+                }
+              </ul>
+            </div>
+          </cdk-accordion-item>
+        </cdk-accordion>
+      </li>
+    </ul>
+  </div>
+</div>

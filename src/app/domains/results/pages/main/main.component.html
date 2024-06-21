@@ -1,0 +1,58 @@
+<div class="flex w-full flex-col">
+  <section class="home-promotions">
+    <img src="../../../../../assets/img/promo.png">
+  </section>
+  <section class="w-full p-5">
+    <div class="flex justify-between">
+      <label>Categorías</label>
+      <span>
+        Ver todas
+        <fa-icon [icon]="faArrowRightLong"></fa-icon>
+      </span>
+    </div>
+    <div class="flex flex-wrap w-full justify-around">
+      @for (category of categories; track $index) {
+        <app-category-card [category]="category"></app-category-card>
+      }
+    </div>
+  </section>
+  <section class="w-full p-5">
+    <div class="flex justify-between">
+      <label>Ofertas</label>
+      <span>
+        Ver todas
+        <fa-icon [icon]="faArrowRightLong"></fa-icon>
+      </span>
+    </div>
+    <div class="flex flex-wrap w-full justify-around">
+      @for (offer of offers; track $index) {
+        <app-product-card [product]="offer"></app-product-card>
+      }
+    </div>
+  </section>
+  <section class="w-full p-5 space-y-3">
+    <div class="flex justify-between">
+      <label>Tiendas oficiales</label>
+      <span>
+        Ver todas
+        <fa-icon [icon]="faArrowRightLong"></fa-icon>
+      </span>
+    </div>
+    <div class="flex flex-wrap w-full justify-around">
+      @for (store of stores; track $index) {
+        <app-brand-card [brand]="store"></app-brand-card>
+      }
+    </div>
+    <div class="flex w-full justify-center">
+      <app-brand-card [brand]="largeStore" size="full"></app-brand-card>
+    </div>
+  </section>
+  <section class="w-full p-5 mb-5">
+    <label>Basados en tu última visita</label>
+    <div class="flex flex-wrap w-full justify-around">
+      @for (product of latestProducts; track $index) {
+        <app-product-card [product]="product"></app-product-card>
+      }
+    </div>
+  </section>
+</div>

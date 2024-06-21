@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #F9F9FB;
+}
+
+.logo {
+  width: 89px;
+  height: 36px;
+}
+
+.topbar {
+  height: 136px;
+}
+
+.topbar-row {
+  height: 68px;
+}
+
+.login-img {
+  width: 651px;
+  height: 814px;
+  border-radius: 5%;
+}
+
+.login-form {
+  height: 595px;
+  width: 482px;
+}
+
+.topbar-login {
+  background-color: #d8ff00;
+}
+
+.search-box {
+  width: 590px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.home-promotions {
+  height: 490px;
+}
+
+.product-img {
+  height: 140px;
+  width: 140px;
+}
+
+.product-card {
+  height: 300px;
+  width: 256px;
+}
+
+.filters-container {
+  width: 256px;
+}
