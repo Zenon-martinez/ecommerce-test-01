@@ -1,8 +1,8 @@
-<div>
-  <section class="flex flex-col">
-    <span>Bujia Mazda 3 de 2015</span>
-    <span>680,896 resultados</span>
-    <nav class="flex" aria-label="Breadcrumb">
+<div class="p-4 sm:p-7">
+  <section class="hidden sm:flex flex-col">
+    <span class="text-3xl">Bujia Mazda 3 de 2015</span>
+    <span class="font-semibold">680,896 resultados</span>
+    <nav class="flex mt-3 mb-3" aria-label="Breadcrumb">
       <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li class="inline-flex items-center">
           <a class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -18,20 +18,20 @@
       </ol>
     </nav>
   </section>
-  <section class="flex">
+  <section class="flex flex-col sm:flex-row">
     <app-filters></app-filters>
-    <div class="flex flex-col w-full">
-      <div class="flex justify-between p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex flex-col w-full space-y-4 ml-4">
+      <div class="hidden sm:flex justify-between p-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div class="flex">
-          <span>Ordenar por: Menor precio</span>
+          <span class="mr-3">Ordenar por: Menor precio</span>
           <fa-icon [icon]="faChevronDown"></fa-icon>
         </div>
         <div class="flex space-x-3">
           <fa-icon [icon]="faTableCells"></fa-icon>
-          <fa-icon [icon]="faRectangleList"></fa-icon>
+          <fa-icon [icon]="faBars"></fa-icon>
         </div>
       </div>
-      <div class="grid grid-cols-4 gap-4">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-items-center">
         @for (product of products; track $index) {
           <app-product-card [product]="product"></app-product-card>
         }

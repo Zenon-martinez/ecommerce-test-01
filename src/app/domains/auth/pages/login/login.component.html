@@ -1,62 +1,80 @@
-<div>
+<div class="flex flex-col w-full">
   <app-navbar />
-  <div class="bg-white sm:bg-gray-50 flex justify-center items-center">
-    <div class="w-1/2">
+  <div class="bg-white flex justify-center xl:justify-around items-center">
+    <div class="flex w-0 xl:w-1/2 justify-center">
       <img class="login-img" src="../../../../../assets/img/engine-portrait.webp">
     </div>
-    <div class="flex w-1/2 login-form items-center">
-      <form [formGroup]="loginForm" class="space-y-4 w-full">
-        <span>Inicia sesión</span>
-        <div class="relative">
-          <label>Email o nombre de usuario</label>
-          <input #email formControlName="email" placeholder="Enter your email" type="email"
-            class="w-full rounded bg-gray-100 border-2 border-gray-300">
+    <div class="flex w-full xl:w-1/2 sm:items-center justify-center h-screen sm:h-full p-10 sm:p-0">
+      <form [formGroup]="loginForm" class="flex flex-col justify-evenly sm:justify-normal space-y-8 sm:space-y-5 sm:login-form">
+        <div class="flex items-center justify-center sm:justify-start">
+          <fa-icon class="absolute left-10 block sm:hidden" [icon]="faArrowLeft"></fa-icon>
+          <span class="text-3xl">Inicia sesión</span>
         </div>
-        <div class="relative">
-          <label>Contraseña</label>
-          <input #pass formControlName="password" placeholder="Enter password" type="password"
-            class="w-full rounded bg-gray-100 border-2 border-gray-200">
-          <button type="button" data-hs-toggle-password='{
-          "target": "#hs-toggle-password"
-        }' class="absolute end-0 2rounded-e-md">
-            <fa-icon [icon]="faEye"></fa-icon>
-          </button>
-        </div>
-        <div class="w-full">
-          <label class="inline-flex items-center cursor-pointer">
-            <input type="checkbox" formControlName="rememberMe" class="sr-only peer">
-            <div
-              class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+        <div class="space-y-8 sm:space-y-5">
+          <div class="relative">
+            <label>Email o nombre de usuario</label>
+            <input #email formControlName="email" placeholder="Email o nombre de usuario" type="email"
+              class="w-full rounded bg-gray-100 border-2 border-gray-300">
+            @if (loginData.email.touched && !loginData.email.valid) {
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500">Requerido</p>
+            }
+          </div>
+          <div class="relative">
+            <label>Contraseña</label>
+            <div class="relative">
+              <input id="hs-toggle-password" #pass formControlName="password" placeholder="Contraseña" [type]="passwordType"
+              class="w-full rounded bg-gray-100 border-2 border-gray-200">
+            <button (click)="togglePassword()" type="button" data-hs-toggle-password='{
+            "target": "#hs-toggle-password"
+          }' class="absolute top-0 end-0 p-3 rounded-e-md">
+              @if (showPassword) {
+                <fa-icon [icon]="faEye"></fa-icon>
+              } @else {
+                <fa-icon [icon]="faEyeSlash"></fa-icon>
+              }
+            </button>
             </div>
-            <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Recuerdame</span>
-          </label>
-        </div>
-        <div>
-          <button type="button"
-            class="w-full focus:outline-none text-black bg-primary-400 hover:bg-primary-500 rounded-lg px-5 py-2.5" (click)="login()">INICIAR
-            SESIÓN</button>
-          <label>¿Olvidaste tu contraseña?</label>
+            @if (loginData.password.touched && !loginData.password.valid) {
+            <p class="mt-2 text-sm text-red-600 dark:text-red-500">Requerido</p>
+            }
+          </div>
+          <div class="w-full">
+            <label class="inline-flex items-center cursor-pointer">
+              <input type="checkbox" formControlName="rememberMe" class="sr-only peer">
+              <div
+                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+              </div>
+              <span class="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">Recuerdame</span>
+            </label>
+          </div>
+          <div>
+            <button type="button"
+              class="w-full font-semibold focus:outline-none text-black bg-yellow hover:bg-yellow rounded-lg px-5 py-2.5"
+              (click)="login()">INICIAR
+              SESIÓN</button>
+            <label>¿Olvidaste tu contraseña?</label>
+          </div>
         </div>
         <div class="flex items-center space-x-5">
           <label>¿No tienes una cuenta?</label>
-          <button class="text-white bg-black rounded-lg px-5 py-1" type="button">REGISTRARSE</button>
+          <button (click)="register()" class="text-white bg-black rounded-lg px-5 py-1" type="button">REGISTRARSE</button>
         </div>
         <div>
           <label class="">Inicia sesión con tus redes sociales</label>
-        <div class="flex space-x-5">
-          <button
-            class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
-            <img class="h-5" src="/assets/img/google.png">
-          </button>
-          <button
-            class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
-            <img class="h-5" src="/assets/img/facebook.png">
-          </button>
-          <button
-            class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
-            <img class="h-5" src="/assets/img/apple.png">
-          </button>
-        </div>
+          <div class="flex space-x-5">
+            <button
+              class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
+              <img class="h-5" src="/assets/img/google.png">
+            </button>
+            <button
+              class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
+              <img class="h-5" src="/assets/img/facebook.png">
+            </button>
+            <button
+              class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
+              <img class="h-5" src="/assets/img/apple.png">
+            </button>
+          </div>
         </div>
       </form>
     </div>

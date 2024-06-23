@@ -1,5 +1,7 @@
-<div class="flex flex-col bg-white product-card">
-  <img class="rounded" [src]="'https://picsum.photos/id/'+category.id+'/100'">
-  <label>Llantas</label>
-  <label>Ver todo</label>
+<div class="flex flex-col bg-transparent category-card mb-3">
+  <div class="p-3 bg-white h-full flex justify-center">
+    <img class="category-img rounded w-full" [src]="'https://picsum.photos/id/'+category.id+'/200'">
+  </div>
+  <label class="font-semibold text-xs sm:text-sm">{{ category.nombre }}</label>
+  <label class="text-xs sm:text-sm">Ver todo</label>
 </div>

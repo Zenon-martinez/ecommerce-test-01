@@ -1,39 +1,53 @@
-<nav class= "border-gray-200 px-6 shadow-md" [ngClass]="{'topbar-login': session}">
-  <div class="topbar flex flex-wrap justify-items-stretch items-center">
+<nav class="border-gray-200 px-6 bg-white shadow-md" [ngClass]="{'topbar-login': session()||visible, 'sm:flex hidden': !session() && !visible}">
+  <div class="topbar flex flex-wrap justify-items-stretch items-center w-full">
     <div class="w-full">
       <div class="topbar-row flex items-center justify-between gap-x-2 w-full">
-        <div class="flex space-x-10">
-          <a routerLink="/">
+        <div class="flex sm:space-x-10">
+          <a class="hidden sm:block" routerLink="/">
             <img class="logo" src="assets/img/logo.svg" alt="logo" />
           </a>
+          <button class="block sm:hidden" type="button">
+            <fa-icon class="text-xl" [icon]="faBars"></fa-icon>
+          </button>
+          @if (session()||visible) {
           <form class="max-w-md mx-auto search-box">
-            <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+            <label for="default-search"
+              class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
-                </div>
-                <input type="search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+              </div>
+              <input type="search"
+                class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-3xl sm:rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             </div>
           </form>
-          <button (click)="search()" class="bg-white py-3 rounded-lg px-5" type="button">
+          <button (click)="search()" class="bg-white py-3 rounded-lg px-5 hidden sm:block" type="button">
             Registra tu auto
           </button>
+          }
         </div>
         <div class="flex space-x-5">
+          @if (session()||visible) {
           <button class="py-3" type="button">
-            <fa-icon [icon]="faBell"></fa-icon>
+            <fa-icon class="text-xl" [icon]="faBell"></fa-icon>
           </button>
           <button class="py-3" type="button">
-            <fa-icon [icon]="faCartShopping"></fa-icon>
+            <fa-icon class="text-xl" [icon]="faCartShopping"></fa-icon>
           </button>
+          }
           @if (!session) {
-            <button class="py-3" type="button">
-              <fa-icon [icon]="faBars"></fa-icon>
-            </button>
+          <button class="py-3" type="button">
+            <fa-icon [icon]="faBars"></fa-icon>
+          </button>
           }
         </div>
       </div>
-      <div class="topbar-row flex items-center gap-x-2 justify-around">
+      @if (session()||visible) {
+      <div class="flex items-center w-fit rounded-lg p-1.5 sm:hidden border border-black">
+        <fa-icon class="mr-2" [icon]="faMap"></fa-icon>
+        <span class="text-sm">Enviar a CP 42010</span>
+      </div>
+      <div class="topbar-row hidden sm:flex items-center gap-x-2 justify-around">
         <ul class="flex items-center text-sm font-medium">
           <li>
             <a class="block py-2 px-4 rounded">
@@ -59,6 +73,7 @@
         </ul>
         <a class="block py-2 px-4 rounded">Ingresar</a>
       </div>
+      }
     </div>
     <div>
 

@@ -2,43 +2,39 @@
   <section class="home-promotions">
     <img src="../../../../../assets/img/promo.png">
   </section>
-  <section class="w-full p-5">
+  <section class="w-full p-2 sm:p-10 space-y-5">
     <div class="flex justify-between">
-      <label>Categorías</label>
-      <span>
-        Ver todas
-        <fa-icon [icon]="faArrowRightLong"></fa-icon>
-      </span>
+      <label class="font-semibold text-xl">Categorías</label>
     </div>
-    <div class="flex flex-wrap w-full justify-around">
+    <div class="grid grid-cols-2 sm:grid-cols-5 w-full justify-items-center">
       @for (category of categories; track $index) {
         <app-category-card [category]="category"></app-category-card>
       }
     </div>
   </section>
-  <section class="w-full p-5">
+  <section class="w-full p-2 sm:p-10 space-y-5">
     <div class="flex justify-between">
-      <label>Ofertas</label>
-      <span>
+      <label class="font-semibold text-xl">Ofertas</label>
+      <span class="font-semibold text-lg">
         Ver todas
         <fa-icon [icon]="faArrowRightLong"></fa-icon>
       </span>
     </div>
-    <div class="flex flex-wrap w-full justify-around">
+    <div class="grid grid-cols-2 sm:grid-cols-5 w-full justify-items-center">
       @for (offer of offers; track $index) {
         <app-product-card [product]="offer"></app-product-card>
       }
     </div>
   </section>
-  <section class="w-full p-5 space-y-3">
+  <section class="w-full p-2 sm:p-10  space-y-5">
     <div class="flex justify-between">
-      <label>Tiendas oficiales</label>
-      <span>
+      <label class="font-semibold text-xl">Tiendas oficiales</label>
+      <span class="font-semibold text-lg">
         Ver todas
         <fa-icon [icon]="faArrowRightLong"></fa-icon>
       </span>
     </div>
-    <div class="flex flex-wrap w-full justify-around">
+    <div class="grid grid-cols-2 sm:grid-cols-5 w-full justify-items-center">
       @for (store of stores; track $index) {
         <app-brand-card [brand]="store"></app-brand-card>
       }
@@ -47,9 +43,9 @@
       <app-brand-card [brand]="largeStore" size="full"></app-brand-card>
     </div>
   </section>
-  <section class="w-full p-5 mb-5">
-    <label>Basados en tu última visita</label>
-    <div class="flex flex-wrap w-full justify-around">
+  <section class="w-full p-2 sm:p-10 space-y-5 mb-5">
+    <label class="font-semibold text-xl">Basados en tu última visita</label>
+    <div class="grid grid-cols-2 sm:grid-cols-5 w-full justify-items-center">
       @for (product of latestProducts; track $index) {
         <app-product-card [product]="product"></app-product-card>
       }

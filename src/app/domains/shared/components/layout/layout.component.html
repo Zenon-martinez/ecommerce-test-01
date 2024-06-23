@@ -1,7 +1,8 @@
 <div class="flex flex-col">
   <app-navbar></app-navbar>
-  <div>
+  <div class="grow h-full">
     <router-outlet />
   </div>
-  <app-footer></app-footer>
+  <app-footer class="hidden sm:block"></app-footer>
+  <app-tab-bar class="block sm:hidden"></app-tab-bar>
 </div>

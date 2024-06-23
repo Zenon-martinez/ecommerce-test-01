@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
 import { FiltersComponent } from '../../components/filters/filters.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faChevronRight, faChevronDown, faRectangleList, faTableCells } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faChevronDown, faBars, faTableCells } from '@fortawesome/free-solid-svg-icons';
 import { Product } from '../../../shared/models/product.model';
 import { CategoriesService } from '../../../shared/services/categories.service';
 
@@ -23,7 +23,7 @@ export class ResultsComponent {
 
   faChevronRight = faChevronRight;
   faChevronDown = faChevronDown;
-  faRectangleList = faRectangleList;
+  faBars = faBars;
   faTableCells = faTableCells;
 
   products: Product[] = [];

@@ -43,7 +43,7 @@ export class MainComponent {
   private async initCategories() {
     const response = this.categoriesService.getCategories();
     if(!response) return;
-    this.categories = response.content.slice(0,4);
+    this.categories = response.content.slice(0,5);
     console.log(this.categories);
   }
 
@@ -64,7 +64,7 @@ export class MainComponent {
   private async initStores() {
     const response = this.categoriesService.getStores();
     if(!response) return;
-    this.stores = response.content.splice(0,4);
+    this.stores = response.content.splice(0,5);
     this.largeStore = response.content.at(-1)!;
   }
 }

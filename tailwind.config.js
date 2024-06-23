@@ -8,14 +8,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        success: colors.blue,
-        primary: colors.green
+        yellow: '#d8ff00'
       },
       screens: {
        'sm': '640px',
        'md': '768px',
         'lg': '1024px',
-        'xl': '1140px',
+        'xl': '1260px',
         '2xl': '1400px'
       },
       container: {

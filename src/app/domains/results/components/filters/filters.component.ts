@@ -3,6 +3,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import { CategoriesService } from '../../../shared/services/categories.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-filters',
@@ -18,13 +19,19 @@ export class FiltersComponent {
   faChevronDown = faChevronDown;
   faChevronUp = faChevronUp;
   brands: string[] = [];
+  small: boolean = true;
 
-  constructor(private categoryService: CategoriesService) {
+  constructor(private categoryService: CategoriesService, private responsive: BreakpointObserver) {
 
   }
 
   ngOnInit() {
     this.initBrands();
+    this.responsive.observe([
+      Breakpoints.XSmall
+    ]).subscribe(result => {
+      this.small = result.matches ? false : true;
+    });
   }
 
   private initBrands(): void {

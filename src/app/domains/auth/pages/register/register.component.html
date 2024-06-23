@@ -1,0 +1,79 @@
+<div class="flex flex-col w-full">
+  <app-navbar />
+  <div class="bg-white flex flex-col justify-center xl:justify-around items-center">
+    <div>
+      <span class="flex text-center justify-center text-2xl font-semibold px-3">Hola, te pedimos algunos datos para crear una cuenta de marca</span>
+      <hr class="h-1 mx-auto bg-yellow border-0 rounded my-2">
+    </div>
+    <form [formGroup]="registerForm" class="register-form border-2 rounded-md p-5 mt-5 space-y-4">
+      <span class="font-semibold text-xl text-center">Información de la empresa</span>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="flex flex-col">
+          <label>Nombre Comercial</label>
+          <input formControlName="name" placeholder="Nombre Comercial" type="text"
+            class="w-full rounded bg-gray-100 border-2 border-gray-300">
+        </div>
+        <div class="flex flex-col">
+          <label>Telefono de la empresa</label>
+          <input formControlName="phone" placeholder="Nombre Comercial" type="text"
+            class="w-full rounded bg-gray-100 border-2 border-gray-300">
+        </div>
+        <div class="flex flex-col">
+          <label>CSF</label>
+          <button
+            class="font-semibold focus:outline-none text-black bg-yellow hover:bg-yellow rounded-lg px-5 py-2.5">Upload</button>
+        </div>
+        <div class="flex flex-col">
+          <label>Identificación Oficial</label>
+          <button
+            class="font-semibold focus:outline-none text-black bg-yellow hover:bg-yellow rounded-lg px-5 py-2.5">Upload</button>
+        </div>
+      </div>
+      <div>
+        <span class="font-semibold text-xl">Dirección</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="flex flex-col">
+          <label>Calle</label>
+          <input formControlName="street" placeholder="Calle" type="text"
+            class="w-full rounded bg-gray-100 border-2 border-gray-300">
+        </div>
+        <div class="flex flex-col">
+          <label>Número exterior</label>
+          <input formControlName="externalNo" placeholder="Número exterior" type="text"
+            class="w-full rounded bg-gray-100 border-2 border-gray-300">
+        </div>
+        <div class="flex flex-col">
+          <label>Número interior</label>
+          <input formControlName="internalNo" placeholder="Número interior" type="text"
+            class="w-full rounded bg-gray-100 border-2 border-gray-300">
+        </div>
+        <div class="flex flex-col">
+          <label>Colonia</label>
+          <input formControlName="colonia" placeholder="Colonia" type="text"
+            class="w-full rounded bg-gray-100 border-2 border-gray-300">
+        </div>
+        <div class="flex flex-col">
+          <label>Código Postal</label>
+          <input formControlName="cp" placeholder="CP" type="text"
+            class="w-full rounded bg-gray-100 border-2 border-gray-300">
+        </div>
+      </div>
+      <div class="flex items-center">
+        <input type="checkbox" formControlName="privacy"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Acepto los Términos y condiciones, y
+          autorizo el uso de mis datos de acuerdo a la Declaración de Privacidad</label>
+      </div>
+      <div class="flex items-center">
+        <input checked type="checkbox" formControlName="advertising"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Acepto recibir información por
+          correo</label>
+      </div>
+      <div class="flex w-full justify-center">
+        <button (click)="create()" class="text-white font-semibold text-xl bg-black rounded-2xl px-10 py-2" type="button">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>
