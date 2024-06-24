@@ -2,7 +2,7 @@
   <app-navbar />
   <div class="bg-white flex justify-center xl:justify-around items-center">
     <div class="flex w-0 xl:w-1/2 justify-center">
-      <img class="login-img" src="../../../../../assets/img/engine-portrait.webp">
+      <img class="login-img">
     </div>
     <div class="flex w-full xl:w-1/2 sm:items-center justify-center h-screen sm:h-full p-10 sm:p-0">
       <form [formGroup]="loginForm" class="flex flex-col justify-evenly sm:justify-normal space-y-8 sm:space-y-5 sm:login-form">
@@ -64,15 +64,15 @@
           <div class="flex space-x-5">
             <button
               class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
-              <img class="h-5" src="/assets/img/google.png">
+              <span class="h-5 w-5 google"></span>
             </button>
             <button
               class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
-              <img class="h-5" src="/assets/img/facebook.png">
+              <span class="h-5 w-5 facebook"></span>
             </button>
             <button
               class="py-3 px-4 w-full font-medium rounded text-sm bg-white border border-gray-400 inline-flex items-center justify-center">
-              <img class="h-5" src="/assets/img/apple.png">
+              <span class="h-5 w-5 apple"></span>
             </button>
           </div>
         </div>

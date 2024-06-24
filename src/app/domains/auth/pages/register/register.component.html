@@ -1,11 +1,11 @@
 <div class="flex flex-col w-full">
   <app-navbar />
   <div class="bg-white flex flex-col justify-center xl:justify-around items-center">
-    <div>
+    <div class="mt-5">
       <span class="flex text-center justify-center text-2xl font-semibold px-3">Hola, te pedimos algunos datos para crear una cuenta de marca</span>
       <hr class="h-1 mx-auto bg-yellow border-0 rounded my-2">
     </div>
-    <form [formGroup]="registerForm" class="register-form border-2 rounded-md p-5 mt-5 space-y-4">
+    <form [formGroup]="registerForm" class="register-form sm:border-2 rounded-md p-5 mt-5 space-y-4">
       <span class="font-semibold text-xl text-center">Información de la empresa</span>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
         <div class="flex flex-col">

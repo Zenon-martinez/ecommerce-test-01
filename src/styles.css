@@ -10,6 +10,8 @@ body {
 .logo {
   width: 89px;
   height: 36px;
+  display: block;
+  margin-top: 10px;
 }
 
 .topbar {
@@ -24,6 +26,8 @@ body {
   width: 651px;
   height: 814px;
   border-radius: 2%;
+  background-image: url('assets/img/engine-portrait.webp');
+  background-repeat: round;
 }
 
 .login-form {
@@ -45,6 +49,10 @@ a {
 
 .home-promotions {
   height: 490px;
+  img {
+    width: 100%;
+    height: inherit;
+  }
 }
 
 .product-img {
@@ -71,6 +79,31 @@ a {
   label {
     font-weight: 500;
   }
+}
+
+.facebook {
+  background-image: url('assets/img/facebook.png');
+  background-repeat: round;
+}
+
+.google{
+  background-image: url('assets/img/google.png');
+  background-repeat: round;
+}
+
+.apple {
+  background-image: url('assets/img/apple.png');
+  background-repeat: round;
+}
+
+.promotion {
+  background-image: url('assets/img/promo.png');
+  background-repeat: round;
+}
+
+.logo-img {
+  background-image: url('assets/img/logo.svg');
+  background-repeat: round;
 }
 
 @media (max-width: 640px) {

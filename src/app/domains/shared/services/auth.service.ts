@@ -20,7 +20,7 @@ export class AuthService {
 
   login(credientals: any) {
     const body = {
-      username: credientals.name,
+      username: credientals.email,
       password:  credientals.password
     };
     return this.http.post(`${this.apiUrl}/${LOGIN_PATH}`, body).toPromise();

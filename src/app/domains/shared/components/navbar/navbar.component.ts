@@ -6,6 +6,9 @@ import { faInfoCircle, faGripVertical, faBars, faMagnifyingGlass, faCartShopping
 import { faBell, faMap } from '@fortawesome/free-regular-svg-icons';
 import { AuthService } from '../../services/auth.service';
 import { filter } from 'rxjs';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-navbar',
@@ -34,14 +37,15 @@ export class NavbarComponent {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private productsService: ProductsService
   ) {
     this.router.events
     .pipe(
       filter( e => e instanceof NavigationEnd)
     ).subscribe((e: any) => {
       console.log(e);
-      this.visible = e.url.includes('/login') ? false : true;
+      this.visible = e.url.includes('/login') || e.url.includes('/register')  ? false : true;
       console.log(this.visible);
     });
   }
@@ -50,7 +54,22 @@ export class NavbarComponent {
     this.session = this.authService.isAuthenticated();
   }
 
-  search() {
+  search(event?: any) {
+    console.log(event);
+    if(!event) {
+      this.router.navigate(['/main/results']);
+      return;
+    }
+    if(!event.target) {
+      this.searchByText();
+      return;
+    }
+    if(event.target.value.trim() === '') return;
+    this.searchByText();
+  }
+
+  searchByText() {
+    this.productsService.searchByText();
     this.router.navigate(['/main/results']);
   }
 }

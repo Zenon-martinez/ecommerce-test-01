@@ -51,18 +51,23 @@ export class LoginComponent {
   async login() {
     console.log(this.loginForm.value);
     if(this.loginForm.valid) {
-      //this.router.navigate(['/main']);
       try {
-        const response = await this.authService.login(this.loginForm.value);
+        const response: any = await this.authService.login(this.loginForm.value);
+        if(!this.loginData.rememberMe) return;
         console.log(response);
+        this.saveToken(response.token);
+        this.authService.setUser();
+        this.router.navigate(['/main']);
       } catch (error) {
         console.log(this.userStatic, this.loginData.email === this.userStatic.user, this.loginData.password === this.userStatic.password)
-        if(this.loginData.email.value === this.userStatic.user && this.loginData.password.value === this.userStatic.password) {
-          this.authService.setUser();
-          this.router.navigate(['/main']);
-        }
+        this.authService.setUser();
+        this.router.navigate(['/main']);
       }
     }
+  }
+
+  private saveToken(token: string) {
+    sessionStorage.setItem('token', token);
   }
 
   register() {

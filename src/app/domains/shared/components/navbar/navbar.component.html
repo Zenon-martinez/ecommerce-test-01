@@ -4,24 +4,25 @@
       <div class="topbar-row flex items-center justify-between gap-x-2 w-full">
         <div class="flex sm:space-x-10">
           <a class="hidden sm:block" routerLink="/">
-            <img class="logo" src="assets/img/logo.svg" alt="logo" />
+            <span class="logo logo-img"></span>
           </a>
           <button class="block sm:hidden" type="button">
             <fa-icon class="text-xl" [icon]="faBars"></fa-icon>
           </button>
           @if (session()||visible) {
-          <form class="max-w-md mx-auto search-box">
+          <div class="max-w-md mx-auto search-box">
             <label for="default-search"
               class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div class="relative">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                 <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
               </div>
-              <input type="search"
-                class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-3xl sm:rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+              <input #searchInput type="search"
+                class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-3xl sm:rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                (keydown.enter)="search($event)"/>
             </div>
-          </form>
-          <button (click)="search()" class="bg-white py-3 rounded-lg px-5 hidden sm:block" type="button">
+          </div>
+          <button (click)="search(searchInput.value)" class="bg-white py-3 rounded-lg px-5 hidden sm:block" type="button">
             Registra tu auto
           </button>
           }
